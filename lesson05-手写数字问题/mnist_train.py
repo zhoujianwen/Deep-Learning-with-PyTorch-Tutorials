@@ -8,6 +8,12 @@ from    matplotlib import pyplot as plt
 
 from    utils import plot_image, plot_curve, one_hot
 
+# 解决Pycharm导入模块时提示“Unresolved reference”
+# 在pycharm中设置source路径
+# file–>setting–>project:server–>project structure-->选择python(工程名)-->点击Sources图标-->Apply即可
+# 将放package的文件夹设置为source，这样import的模块类等，就是通过这些source文件夹作为根路径来查找，也就是
+# 在这些source文件夹中查找import的东西。
+
 
 
 batch_size = 512
