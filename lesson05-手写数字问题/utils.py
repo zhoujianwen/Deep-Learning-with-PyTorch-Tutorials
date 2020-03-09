@@ -1,7 +1,7 @@
 import  torch
 from    matplotlib import pyplot as plt
 
-
+# LOSS数据可示化，画曲线。
 def plot_curve(data):
     fig = plt.figure()
     plt.plot(range(len(data)), data, color='blue')
@@ -11,7 +11,7 @@ def plot_curve(data):
     plt.show()
 
 
-
+# 识别结果
 def plot_image(img, label, name):
 
     fig = plt.figure()
@@ -24,7 +24,7 @@ def plot_image(img, label, name):
         plt.yticks([])
     plt.show()
 
-
+# onehot编码
 def one_hot(label, depth=10):
     out = torch.zeros(label.size(0), depth)
     idx = torch.LongTensor(label).view(-1, 1)
