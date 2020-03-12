@@ -2,8 +2,8 @@
 # @Time    : 2020/3/9 23:33
 # @Author  : zhoujianwen
 # @Email   : zhou_jianwen@qq.com
-# @File    : gd.py
-# @Describe: 如何利用numpy采用梯度下降的方法求解二元一次方程组
+# @File    : mnist_train.py
+# @Describe: 回顾神经网络分类任务的整体流程
 
 import torch
 from torch import nn  # 神经网络库
@@ -24,6 +24,10 @@ from utils import plot_image, plot_curve, one_hot
 batch_size = 512
 
 # step1. load dataset
+# Normalize 零—均值规范化也叫标准差标准化，mean：0.1307，std：0.3081，其转化公式s = (x - mean)/std,
+# 特征标准化不会改变特征取值分布，只是为了保证参数变量的取值范围具有相似的尺度，以帮助梯度下降算法收敛更快。
+# shuffle 将数据集随机打乱
+
 train_loader = torch.utils.data.DataLoader(
     torchvision.datasets.MNIST('mnist_data', train=True, download=True,
                                transform=torchvision.transforms.Compose([
@@ -76,8 +80,10 @@ optimizer = optim.SGD(net.parameters(), lr=0.01, momentum=0.9)
 
 
 train_loss = []
-
-for epoch in range(3):
+'''
+train_loader有训练样本60k，batchsize = 512，iteration = 60k/512 = 117.1875，epoch = 1
+'''
+for epoch in range(60):
 
     for batch_idx, (x, y) in enumerate(train_loader):
 
